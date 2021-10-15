@@ -1,0 +1,62 @@
+﻿@page
+@model Razor_Application.Pages.BookList.IndexModel
+@{
+
+}
+    <h2 class="text-primary text-center">Book List </h2>
+    <a asp-page="Upsert" class="btn bnt-primary m-1 p-1">Create New Book</a>
+    @if (Model.Book.Count() > 0)
+    {
+        <form method="post">
+            <table class="table table-striped table-bordered table-active">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>Author</th>
+                        <th>ISBN</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Book)
+                    {
+                        <tr>
+                            <td>@item.Name</td>
+                            <td>@item.Author</td>
+                            <td>@item.ISBN</td>
+                            <td>
+                                <a asp-page="Upsert" asp-route-id="@item.Id" class="btn btn-primary">Edit</a>
+                                <button asp-route-id="@item.Id" asp-page-handler="Delete" class="btn btn-danger" onclick="return confirm('want to Delete Data ?')">Delete</button>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </form>
+
+    }
+    else
+    {
+        <p class="text-danger h2">No Record Found</p>
+    }
+    <h3 class="text-primary text-center">OR</h3>
+    <table id="DT-Load" class="table table-striped table-bordered table-active">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Author</th>
+                <th>ISBN</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+    </table>
+    @section Scripts
+    {
+        <script src="~/js/booklist.js"></script>
+    }
+
+
+
+
+

@@ -1,0 +1,50 @@
+﻿@page
+@model Razor_Application.Pages.BookList.UpsertModel
+@{
+ }
+<h2 class="text-primary text-center">Usert Book</h2>
+<form method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Book.Id" /> @*this is for pass value*@
+    <div class="container border p-3">
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Book.Name">Name</label>
+            </div>
+            <div class="col-6">
+                <input type="text" class="form-control" asp-for="Book.Name" />
+            </div>
+            <span asp-validation-for="Book.Name" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Book.Author">Author</label>
+            </div>
+            <div class="col-6">
+                <input type="text" class="form-control" asp-for="Book.Author" />
+            </div>
+            <span asp-validation-for="Book.Author" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Book.ISBN">ISBN</label>
+            </div>
+            <div class="col-6">
+                <input type="text" class="form-control" asp-for="Book.ISBN" />
+            </div>
+            <span asp-validation-for="Book.ISBN" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3 offset-3">
+                <button type="submit" class="btn btn-success form-control">Update</button>
+            </div>
+            <div class="col-3">
+                <a asp-page="Index" class="btn btn-info form-control"> Back To List</a>
+            </div>
+        </div>
+    </div>
+</form> 
+ 
+@section scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
